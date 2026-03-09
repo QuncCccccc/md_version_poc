@@ -1,0 +1,12 @@
+name: poc_m3e_subfolder
+description: A POC for managing M3 and M3E using the subfolder solution.
+version: 1.0.0
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
