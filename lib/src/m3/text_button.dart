@@ -364,8 +364,37 @@ class TextButton extends ButtonStyleButton {
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
     final ThemeData theme = Theme.of(context);
+    final ButtonStyle buttonStyle = themeDefaults(context);
+
+    // Only apply padding when TextButton has an Icon.
+    if (_addPadding) {
+      final double defaultFontSize =
+          buttonStyle.textStyle?.resolve(const <WidgetState>{})?.fontSize ??
+              14.0;
+      final double effectiveTextScale =
+          MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0;
+      final EdgeInsetsGeometry scaledPadding = ButtonStyleButton.scaledPadding(
+        theme.useMaterial3
+            ? const EdgeInsetsDirectional.fromSTEB(12, 8, 16, 8)
+            : const EdgeInsets.all(8),
+        const EdgeInsets.symmetric(horizontal: 4),
+        const EdgeInsets.symmetric(horizontal: 4),
+        effectiveTextScale,
+      );
+      return buttonStyle.copyWith(
+        padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
+      );
+    }
+
+    return buttonStyle;
+  }
+
+  /// Override this to provide version-specific defaults.
+  @protected
+  ButtonStyle themeDefaults(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
-    final ButtonStyle buttonStyle = theme.useMaterial3
+    return theme.useMaterial3
         ? _TextButtonDefaultsM3(context)
         : styleFrom(
             foregroundColor: colorScheme.primary,
@@ -388,28 +417,11 @@ class TextButton extends ButtonStyleButton {
             alignment: Alignment.center,
             splashFactory: InkRipple.splashFactory,
           );
-
-    // Only apply padding when TextButton has an Icon.
-    if (_addPadding) {
-      final double defaultFontSize =
-          buttonStyle.textStyle?.resolve(const <WidgetState>{})?.fontSize ?? 14.0;
-      final double effectiveTextScale =
-          MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0;
-      final EdgeInsetsGeometry scaledPadding = ButtonStyleButton.scaledPadding(
-        theme.useMaterial3
-            ? const EdgeInsetsDirectional.fromSTEB(12, 8, 16, 8)
-            : const EdgeInsets.all(8),
-        const EdgeInsets.symmetric(horizontal: 4),
-        const EdgeInsets.symmetric(horizontal: 4),
-        effectiveTextScale,
-      );
-      return buttonStyle.copyWith(
-        padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
-      );
-    }
-
-    return buttonStyle;
   }
+
+  /// Whether padding should be added to the button layout for icons layout.
+  @protected
+  bool get addPadding => _addPadding;
 
   /// Returns the [TextButtonThemeData.style] of the closest
   /// [TextButtonTheme] ancestor.
