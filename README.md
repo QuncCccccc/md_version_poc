@@ -50,3 +50,14 @@ By keeping these common widgets in `src/` and only duplicating or re-exporting t
 - **Version Isolation**: Side-by-side consumption of M3 and M3E.
 - **Tree Shaking**: Ideal for ensuring fast builds and compact outputs.
 - **Developer Intent**: Explicit structure on how widgets grow over time.
+
+## Usage / Example
+
+The file `example/lib/main.dart` demonstrates how to use components from multiple design versions side-by-side by applying namespace aliases to avoid file conflicts during imports:
+
+```dart
+import 'package:poc_m3e_subfolder/material_m3.dart' as m3;
+import 'package:poc_m3e_subfolder/material_m3e.dart' as m3e;
+```
+
+This guarantees developers can Transition seamlessly or compare changes without collision within the same widget tree.
