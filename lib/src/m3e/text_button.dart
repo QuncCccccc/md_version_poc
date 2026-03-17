@@ -62,9 +62,6 @@ class TextButton extends m3.TextButton {
   @override
   ButtonStyle themeDefaults(BuildContext context) =>
       _TextButtonDefaultsM3E(context);
-
-
-
 }
 
 class _TextButtonDefaultsM3E extends ButtonStyle {
@@ -80,18 +77,18 @@ class _TextButtonDefaultsM3E extends ButtonStyle {
 
   @override
   WidgetStateProperty<TextStyle?> get textStyle =>
-      MaterialStatePropertyAll<TextStyle?>(
+      WidgetStatePropertyAll<TextStyle?>(
           Theme.of(context).textTheme.titleLarge);
 
   @override
   WidgetStateProperty<Color?>? get backgroundColor =>
-    const MaterialStatePropertyAll<Color>(Colors.transparent);
+      const WidgetStatePropertyAll<Color>(Colors.transparent);
 
   @override
   WidgetStateProperty<Color?>? get foregroundColor =>
     WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       if (states.contains(WidgetState.disabled)) {
-        return _colors.onSurface.withOpacity(0.38);
+          return _colors.onSurface.withValues(alpha: 0.38);
       }
         return _colors.tertiary;
     });
@@ -100,32 +97,32 @@ class _TextButtonDefaultsM3E extends ButtonStyle {
   WidgetStateProperty<Color?>? get overlayColor =>
     WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       if (states.contains(WidgetState.pressed)) {
-        return _colors.primary.withOpacity(0.1);
+          return _colors.primary.withValues(alpha: 0.1);
       }
       if (states.contains(WidgetState.hovered)) {
-        return _colors.primary.withOpacity(0.08);
+          return _colors.primary.withValues(alpha: 0.08);
       }
       if (states.contains(WidgetState.focused)) {
-        return _colors.primary.withOpacity(0.1);
+          return _colors.primary.withValues(alpha: 0.1);
       }
       return null;
     });
 
   @override
   WidgetStateProperty<Color>? get shadowColor =>
-    const MaterialStatePropertyAll<Color>(Colors.transparent);
+      const WidgetStatePropertyAll<Color>(Colors.transparent);
 
   @override
   WidgetStateProperty<Color>? get surfaceTintColor =>
-    const MaterialStatePropertyAll<Color>(Colors.transparent);
+      const WidgetStatePropertyAll<Color>(Colors.transparent);
 
   @override
   WidgetStateProperty<double>? get elevation =>
-      const MaterialStatePropertyAll<double>(5.0);
+      const WidgetStatePropertyAll<double>(5.0);
 
   @override
   WidgetStateProperty<EdgeInsetsGeometry>? get padding =>
-      MaterialStatePropertyAll<EdgeInsetsGeometry>(
+      WidgetStatePropertyAll<EdgeInsetsGeometry>(
           ButtonStyleButton.scaledPadding(
         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         const EdgeInsets.symmetric(horizontal: 8),
@@ -137,17 +134,17 @@ class _TextButtonDefaultsM3E extends ButtonStyle {
 
   @override
   WidgetStateProperty<Size>? get minimumSize =>
-    const MaterialStatePropertyAll<Size>(Size(64.0, 40.0));
+      const WidgetStatePropertyAll<Size>(Size(64.0, 40.0));
 
   @override
   WidgetStateProperty<double>? get iconSize =>
-    const MaterialStatePropertyAll<double>(18.0);
+      const WidgetStatePropertyAll<double>(18.0);
 
   @override
   WidgetStateProperty<Color>? get iconColor {
     return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       if (states.contains(WidgetState.disabled)) {
-        return _colors.onSurface.withOpacity(0.38);
+        return _colors.onSurface.withValues(alpha: 0.38);
       }
       if (states.contains(WidgetState.pressed)) {
         return _colors.error;
@@ -164,11 +161,11 @@ class _TextButtonDefaultsM3E extends ButtonStyle {
 
   @override
   WidgetStateProperty<Size>? get maximumSize =>
-    const MaterialStatePropertyAll<Size>(Size.infinite);
+      const WidgetStatePropertyAll<Size>(Size.infinite);
 
   @override
   WidgetStateProperty<OutlinedBorder>? get shape =>
-    const MaterialStatePropertyAll<OutlinedBorder>(StadiumBorder());
+      const WidgetStatePropertyAll<OutlinedBorder>(StadiumBorder());
 
   @override
   WidgetStateProperty<MouseCursor?>? get mouseCursor => WidgetStateMouseCursor.adaptiveClickable;
