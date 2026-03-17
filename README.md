@@ -58,6 +58,4 @@ The file `example/lib/main.dart` demonstrates how to use components from multipl
 ```dart
 import 'package:poc_m3e_subfolder/material_m3.dart' as m3;
 import 'package:poc_m3e_subfolder/material_m3e.dart' as m3e;
-```
 
-This guarantees developers can Transition seamlessly or compare changes without collision within the same widget tree.
