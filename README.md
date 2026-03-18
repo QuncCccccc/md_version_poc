@@ -6,17 +6,15 @@ The goal is to simulate a scenario where the Material library operates independe
 
 ## Architecture Overview
 
-The package uses a subfolder strategy to isolate version-specific implementations while sharing common widgets (like `ButtonStyleButton`, `Scaffold` or `ListView`) as a base:
+The package uses a subfolder strategy to isolate version-specific implementations while sharing common widgets (like `ButtonStyleButton` or `Scaffold`) as a base:
 
 ```text
 lib/
-├── material.dart               # Default entry point
 ├── material_m3.dart            # Material 3 entry point
 ├── material_m3e.dart           # Material 3 Expressive entry point
 └── src/
     ├── button_style_button.dart # Common widget shared across versions
-    ├── Scaffold.dart # Common widget shared across versions
-    ├── ListView.dart # Common widget shared across versions
+    ├── scaffold.dart # Common widget shared across versions
     ├── m3/                     # Material 3 implementations
     │   ├── switch.dart
     │   └── text_button.dart
@@ -56,6 +54,6 @@ By keeping these common widgets in `src/` and only duplicating or re-exporting t
 The file `example/lib/main.dart` demonstrates how to use components from multiple design versions side-by-side by applying namespace aliases to avoid file conflicts during imports:
 
 ```dart
-import 'package:poc_m3e_subfolder/material_m3.dart' as m3;
+import 'package:poc_m3e_subfolder/material_m3.dart';
 import 'package:poc_m3e_subfolder/material_m3e.dart' as m3e;
 

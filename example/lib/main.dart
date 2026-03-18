@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
+// Import Standalone Material 3 version directly
+import 'package:poc_m3e_subfolder/material_m3.dart';
+// Only bring in the version-specific M3E widgets for comparison
+import 'package:poc_m3e_subfolder/material_m3e.dart'
+    as m3e
+    show TextButton, Switch;
 
-// Import both Material versions using namespace aliases to prevent collision
-import 'package:poc_m3e_subfolder/material_m3.dart' as m3;
-import 'package:poc_m3e_subfolder/material_m3e.dart' as m3e;
 
 void main() => runApp(const MyApp());
 
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
                     children: [
                       const Text('m3.TextButton'),
                       const SizedBox(height: 8),
-                      m3.TextButton(
+                      TextButton(
                         onPressed: () {},
                         child: const Text('Text Button'),
                       ),
@@ -86,7 +88,7 @@ class _SwitchDemoState extends State<SwitchDemo> {
           children: [
             const Text('m3.Switch'),
             const SizedBox(height: 8),
-            m3.Switch(
+            Switch(
               value: _m3Value,
               onChanged: (v) {
                 setState(() {
