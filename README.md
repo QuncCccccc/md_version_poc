@@ -10,8 +10,8 @@ The package uses a subfolder strategy to isolate version-specific implementation
 
 ```text
 lib/
-├── material_m3.dart            # Material 3 entry point
-├── material_m3e.dart           # Material 3 Expressive entry point
+├── m3.dart                       # Material 3 entry point
+├── m3e.dart                      # Material 3 Expressive entry point
 └── src/
     ├── button_style_button.dart # Common widget shared across versions
     ├── scaffold.dart # Common widget shared across versions
@@ -54,6 +54,6 @@ By keeping these common widgets in `src/` and only duplicating or re-exporting t
 The file `example/lib/main.dart` demonstrates how to use components from multiple design versions side-by-side by applying namespace aliases to avoid file conflicts during imports:
 
 ```dart
-import 'package:poc_m3e_subfolder/material_m3.dart';
-import 'package:poc_m3e_subfolder/material_m3e.dart' as m3e;
+import 'package:poc_m3e_subfolder/m3.dart';
+import 'package:poc_m3e_subfolder/m3e.dart' as m3e;
 

@@ -1,9 +1,7 @@
 // Import Standalone Material 3 version directly
-import 'package:poc_m3e_subfolder/material_m3.dart';
+import 'package:poc_m3e_subfolder/m3.dart';
 // Only bring in the version-specific M3E widgets for comparison
-import 'package:poc_m3e_subfolder/material_m3e.dart'
-    as m3e
-    show TextButton, Switch;
+import 'package:poc_m3e_subfolder/m3e.dart' as m3e show TextButton, Switch;
 
 
 void main() => runApp(const MyApp());

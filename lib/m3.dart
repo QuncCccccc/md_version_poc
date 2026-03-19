@@ -1,4 +1,4 @@
-library material_m3;
+library m3;
 
 // Re-export standard material to prevent compilation errors and simulate
 // a fully decoupled setup where common widgets exist directly in this repo.
